@@ -6,23 +6,19 @@ var str = "Hello, playground"
 
 //tetx
 
-class StackData {
-    var stack = [Int]()
+class StackData<T> {
+    var stacks = [T]()
     var top: Int = 0
-    init(top: Int) {
+    
+    init(top: Int = 10) {
         self.top = top
-        self.stack = [1, 2, 3]
-        
+    }
+
+    func isEmpty() -> Bool {
+        return stack.isEmpty
     }
     
-    func isempty() -> (Int) {
-        if(top == -1) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-    func isfull() -> (Int) {
+    func isFull() -> T {
         if(top == 8) {
             return 1
         } else {
@@ -30,13 +26,13 @@ class StackData {
         }
     }
 
-    func peek() -> (Int) {
+    func peek() -> T {
         return stack[top]
     }
 
-    func pop() -> (Int) {
+    func pop() -> T {
         var data = 0
-        if(isempty() == 1) {
+        if isEmpty() == 1 {
             data = stack[top]
             top -= 1
             return data
@@ -46,7 +42,7 @@ class StackData {
         }
     }
 
-    func push(data: Int) -> () {
+    func push(data: Int) {
         if(isfull() == 0) {
             top += 1
             stack[top] = data
@@ -56,7 +52,7 @@ class StackData {
     }
 }
 
-var a = StackData(top: 0)
+var a = StackData<Int>()
 a.push(data: 5)
 a.push(data: 10)
 //a.push(data: 15)
